@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b2b2f">
-<title>Loan Application — Demo</title>
+<title>Loan Application — Prototype</title>
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="topbar"><button id="backBtn" class="icon" hidden>‹</button><div class="brand">LOAN APPLICATION</div><span class="version">Demo</span></header>
+<header class="topbar"><button id="backBtn" class="icon" hidden>‹</button><div class="brand">LOAN APPLICATION</div><span class="version">Prototype</span></header>
 
 <main id="app">
   <section id="screen-login" class="screen active">
-    <div class="hero"><div class="logo">₹</div><h1>Welcome</h1><p>Secure loan application prototype</p></div>
+    <div class="hero"><div class="logo">₹</div><h1>Welcome</h1><p>Loan application prototype</p></div>
     <div class="card">
       <label>Mobile Number</label>
       <input id="mobile" inputmode="numeric" maxlength="10" placeholder="Enter 10-digit mobile number">
       <button id="sendOtp" class="primary">Continue</button>
-      <p class="note">Demo mode: no SMS is sent and no real account is created.</p>
+      <p class="note">Prototype mode: SMS, KYC, banking and payments are not connected.</p>
     </div>
   </section>
 
@@ -26,7 +26,7 @@
     <div class="step">Step 1 of 5</div>
     <h2>Mobile verification</h2>
     <div class="card">
-      <p>Enter the 6-digit demo OTP shown below.</p>
+      <p>Enter the 6-digit test OTP shown below.</p>
       <div id="demoOtp" class="demo-otp">------</div>
       <input id="otp" inputmode="numeric" maxlength="6" placeholder="Enter OTP">
       <button id="verifyOtp" class="primary">Verify & Continue</button>
@@ -36,9 +36,9 @@
   <section id="screen-kyc" class="screen">
     <div class="step">Step 2 of 5</div><h2>Identity verification</h2>
     <div class="card">
-      <div class="field"><b>PAN Card</b><span>Demo placeholder — do not upload a real PAN here.</span></div>
-      <div class="field"><b>Aadhaar</b><span>Demo placeholder — do not enter a real Aadhaar number.</span></div>
-      <div class="field"><b>Face KYC</b><span>Demo verification status</span><strong class="ok">Ready for demo</strong></div>
+      <div class="field"><b>PAN Card</b><span>KYC document field — integration placeholder; do not upload real documents yet.</span></div>
+      <div class="field"><b>Aadhaar</b><span>Identity field — integration placeholder; do not enter a real Aadhaar number yet.</span></div>
+      <div class="field"><b>Face KYC</b><span>Face verification status</span><strong class="ok">Integration placeholder</strong></div>
       <button id="kycNext" class="primary">Continue</button>
     </div>
   </section>
@@ -47,7 +47,7 @@
     <div class="step">Step 3 of 5</div><h2>Bank information</h2>
     <div class="card">
       <label>Bank Name</label><input id="bankName" placeholder="Enter bank name">
-      <label>Account Number</label><input id="account" inputmode="numeric" placeholder="Demo account number only">
+      <label>Account Number</label><input id="account" inputmode="numeric" placeholder="Account number — integration placeholder">
       <label>Confirm Account Number</label><input id="account2" inputmode="numeric" placeholder="Re-enter demo account number">
       <button id="bankNext" class="primary">Confirm & Continue</button>
     </div>
@@ -78,30 +78,30 @@
   </section>
 
   <section id="screen-fee1" class="screen">
-    <div class="step">Application fee — DEMO</div><h2>Processing fee</h2>
+    <div class="step">Application fee — Prototype</div><h2>Processing fee</h2>
     <div class="card">
       <div class="fee">₹200</div>
-      <p>This is a visual demo only. No payment is collected.</p>
-      <button id="fee1" class="primary">Continue (Demo)</button>
+      <p>Prototype placeholder. No payment is collected.</p>
+      <button id="fee1" class="primary">Continue</button>
     </div>
   </section>
 
   <section id="screen-fee2" class="screen">
-    <div class="step">Withdrawal step — DEMO</div><h2>Withdrawal activation</h2>
+    <div class="step">Withdrawal step — Prototype</div><h2>Withdrawal activation</h2>
     <div class="card">
       <div class="fee">₹800</div>
-      <p>This is a visual demo only. No payment gateway or money transfer is connected.</p>
-      <button id="fee2" class="primary">Continue to Progress (Demo)</button>
+      <p>Prototype placeholder. No payment gateway or money transfer is connected.</p>
+      <button id="fee2" class="primary">Continue to Progress</button>
     </div>
   </section>
 
   <section id="screen-status" class="screen">
-    <div class="status-card"><div class="status-icon">✓</div><h2>Application submitted</h2><p>Your demo application is now waiting for administrator review.</p><div class="timeline">
+    <div class="status-card"><div class="status-icon">✓</div><h2>Application submitted</h2><p>Your application prototype is now waiting for administrator review.</p><div class="timeline">
       <div class="done">Profile completed</div><div class="done">Loan request submitted</div><div id="reviewStep">Admin review pending</div><div id="successStep">Disbursement status</div>
     </div></div>
-    <button id="adminApprove" class="primary">Demo: Admin Approve</button>
-    <p id="approved" class="approved" hidden>Approved in demo mode. No money has been transferred.</p>
-    <button id="restart" class="secondary">Start New Demo</button>
+    <button id="adminApprove" class="primary">Admin Review (Prototype)</button>
+    <p id="approved" class="approved" hidden>Prototype approval recorded. No money has been transferred.</p>
+    <button id="restart" class="secondary">Start New Application</button>
   </section>
 </main>
 <script src="app.js"></script>
