@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b2b2f">
+<title>Loan Application — Demo</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar"><button id="backBtn" class="icon" hidden>‹</button><div class="brand">LOAN APPLICATION</div><span class="version">Demo</span></header>
+
+<main id="app">
+  <section id="screen-login" class="screen active">
+    <div class="hero"><div class="logo">₹</div><h1>Welcome</h1><p>Secure loan application prototype</p></div>
+    <div class="card">
+      <label>Mobile Number</label>
+      <input id="mobile" inputmode="numeric" maxlength="10" placeholder="Enter 10-digit mobile number">
+      <button id="sendOtp" class="primary">Continue</button>
+      <p class="note">Demo mode: no SMS is sent and no real account is created.</p>
+    </div>
+  </section>
+
+  <section id="screen-otp" class="screen">
+    <div class="step">Step 1 of 5</div>
+    <h2>Mobile verification</h2>
+    <div class="card">
+      <p>Enter the 6-digit demo OTP shown below.</p>
+      <div id="demoOtp" class="demo-otp">------</div>
+      <input id="otp" inputmode="numeric" maxlength="6" placeholder="Enter OTP">
+      <button id="verifyOtp" class="primary">Verify & Continue</button>
+    </div>
+  </section>
+
+  <section id="screen-kyc" class="screen">
+    <div class="step">Step 2 of 5</div><h2>Identity verification</h2>
+    <div class="card">
+      <div class="field"><b>PAN Card</b><span>Demo placeholder — do not upload a real PAN here.</span></div>
+      <div class="field"><b>Aadhaar</b><span>Demo placeholder — do not enter a real Aadhaar number.</span></div>
+      <div class="field"><b>Face KYC</b><span>Demo verification status</span><strong class="ok">Ready for demo</strong></div>
+      <button id="kycNext" class="primary">Continue</button>
+    </div>
+  </section>
+
+  <section id="screen-bank" class="screen">
+    <div class="step">Step 3 of 5</div><h2>Bank information</h2>
+    <div class="card">
+      <label>Bank Name</label><input id="bankName" placeholder="Enter bank name">
+      <label>Account Number</label><input id="account" inputmode="numeric" placeholder="Demo account number only">
+      <label>Confirm Account Number</label><input id="account2" inputmode="numeric" placeholder="Re-enter demo account number">
+      <button id="bankNext" class="primary">Confirm & Continue</button>
+    </div>
+  </section>
+
+  <section id="screen-basic" class="screen">
+    <div class="step">Step 4 of 5</div><h2>Basic information</h2>
+    <div class="card">
+      <label>Full Name</label><input id="fullName" placeholder="Full name">
+      <label>Marital Status</label><select id="marital"><option>Single</option><option>Married</option><option>Divorced</option><option>Widowed</option></select>
+      <label>Education / Class</label><input id="education" placeholder="Class / qualification">
+      <label>Employment</label><input id="work" placeholder="What do you do?">
+      <label>Monthly Income</label><input id="income" inputmode="numeric" placeholder="Monthly income">
+      <label>Emergency Contact 1</label><input id="contact1" inputmode="tel" maxlength="10" placeholder="10-digit number">
+      <label>Emergency Contact 2</label><input id="contact2" inputmode="tel" maxlength="10" placeholder="10-digit number">
+      <button id="basicNext" class="primary">Complete Profile</button>
+    </div>
+  </section>
+
+  <section id="screen-loan" class="screen">
+    <div class="step">Step 5 of 5</div><h2>Apply for a loan</h2>
+    <div class="card">
+      <label>Requested Loan Amount</label>
+      <input id="amount" type="number" min="20000" max="1000000" step="1000" placeholder="₹20,000 – ₹10,00,000">
+      <button id="apply" class="primary">Submit Application</button>
+      <p class="note">A real lending product must show lender identity, APR, fees, terms, privacy information and applicable disclosures before a borrower accepts a loan.</p>
+    </div>
+  </section>
+
+  <section id="screen-status" class="screen">
+    <div class="status-card"><div class="status-icon">✓</div><h2>Application submitted</h2><p>Your demo application is now waiting for administrator review.</p><div class="timeline">
+      <div class="done">Profile completed</div><div class="done">Loan request submitted</div><div id="reviewStep">Admin review pending</div><div id="successStep">Disbursement status</div>
+    </div></div>
+    <button id="adminApprove" class="primary">Demo: Admin Approve</button>
+    <p id="approved" class="approved" hidden>Approved in demo mode. No money has been transferred.</p>
+    <button id="restart" class="secondary">Start New Demo</button>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
