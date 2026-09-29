@@ -20,8 +20,20 @@ $('verifyOtp').onclick=()=>{
 $('kycNext').onclick=()=>{
   const pan=$('panTest').value.trim().toUpperCase();
   const aadhaar=$('aadhaarTest').value.trim();
-  if(!/^[A-Z]{5}\d{4}[A-Z]$/.test(pan)||!/^[0-9]{12}$/.test(aadhaar)){
-    alert('Enter a fictional test PAN and a 12-digit test Aadhaar value.');
+  const panName=$('panName').value.trim().replace(/\s+/g,' ').toUpperCase();
+  const aadhaarName=$('aadhaarName').value.trim().replace(/\s+/g,' ').toUpperCase();
+  const panDob=$('panDob').value;
+  const aadhaarDob=$('aadhaarDob').value;
+  if(!/^[A-Z]{5}\d{4}[A-Z]$/.test(pan)||!/^[0-9]{12}$/.test(aadhaar)||!panName||!aadhaarName||!panDob||!aadhaarDob){
+    alert('Complete the fictional PAN and Aadhaar test details, including name and date of birth.');
+    return;
+  }
+  if(panName!==aadhaarName){
+    alert('KYC failed: PAN name and Aadhaar name do not match.');
+    return;
+  }
+  if(panDob!==aadhaarDob){
+    alert('KYC failed: PAN date of birth and Aadhaar date of birth do not match.');
     return;
   }
   $('faceStatus').textContent='Test match';
