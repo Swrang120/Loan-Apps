@@ -88,7 +88,7 @@ $('kycNext').onclick=()=>{
   // Issue 2: Validate every test-KYC field before accepting the simulated result.
   const pan=$('panTest').value.trim().toUpperCase();
   const aadhaar=$('aadhaarTest').value.trim();
-  const panName=$('panName').value.trim().replace(/[[:space:]]+/g,' ').toUpperCase();
+  const panName=$('panName').value.trim().replace(/\s+/g,' ').toUpperCase();
   const aadhaarName=$('aadhaarName').value.trim().replace(/[[:space:]]+/g,' ').toUpperCase();
   const panDob=$('panDob').value;
   const aadhaarDob=$('aadhaarDob').value;
