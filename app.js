@@ -89,7 +89,7 @@ $('kycNext').onclick=()=>{
   const pan=$('panTest').value.trim().toUpperCase();
   const aadhaar=$('aadhaarTest').value.trim();
   const panName=$('panName').value.trim().replace(/\s+/g,' ').toUpperCase();
-  const aadhaarName=$('aadhaarName').value.trim().replace(/[[:space:]]+/g,' ').toUpperCase();
+  const aadhaarName=$('aadhaarName').value.trim().replace(/\s+/g,' ').toUpperCase();
   const panDob=$('panDob').value;
   const aadhaarDob=$('aadhaarDob').value;
   if(!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pan)||!/^[0-9]{12}$/.test(aadhaar)||!panName||!aadhaarName||!panDob||!aadhaarDob){
