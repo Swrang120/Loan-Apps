@@ -1,37 +1,45 @@
 # Loan-Apps — Safe Loan Application Prototype
 
-This repository currently contains a **UI/workflow prototype**, not a live lending service.
+This repository is a UI/workflow prototype, not a live lending service.
 
-## Included in this first version
+## Current flow
+1. Mobile-number test login.
+2. Locally generated demo OTP.
+3. Fictional/test KYC form for PAN/Aadhaar format, name and DOB matching.
+4. Fictional/test bank information.
+5. Basic profile information.
+6. Loan request between ₹20,000 and ₹10,00,000.
+7. Direct prototype administrator review.
+8. Prototype approval status.
 
-1. Mobile-number login screen.
-2. Demo OTP verification (generated locally; no SMS is sent).
-3. KYC screen with clearly marked placeholders.
-4. Bank-information screen using demo values only.
-5. Basic information in English: marital status, education/class, employment, monthly income and two contacts.
-6. Loan request screen with ₹20,000–₹10,00,000 range.
-7. Application status timeline.
-8. Demo administrator approval flow.
+## Fix report
 
-## Important safety/compliance boundary
+### Issue 1 — Prototype OTP handling
+The OTP remains local to the browser session. No SMS provider or real verification credential is used.
+Code trace: app.js — Issue 1.
 
-Real PAN/Aadhaar/face-KYC collection, real bank-account verification, real payment collection and real loan disbursement are intentionally **not enabled** in this prototype.
+### Issue 2 — KYC validation and persistence
+The KYC step validates PAN format, Aadhaar length, name matching and DOB matching. Fictional test data is saved in browser storage so the prototype survives refresh.
+Code trace: app.js — Issue 2 and saveApplication()/loadApplication().
 
-For an actual Indian digital lending product, the lender/regulatory setup, KYC process, privacy/data handling, disclosures, grievance process and fee structure must be reviewed and implemented with the applicable RBI requirements. RBI guidance for digital lending includes disclosure of the all-inclusive cost/APR and states that fees/charges payable to Lending Service Providers in the credit-intermediation process are paid by the regulated entity rather than the borrower. See RBI's published material: https://website.rbi.org.in/documents/d/rbi/handbookg27022025d0f3f53f5d3c4310a6bb2f8ac2175d3a
+### Issue 3 — Removed borrower-payment unlock/withdrawal flow
+The previous UI contained ₹200 and ₹800 prototype screens after submission. They have been removed. A borrower is not asked to pay a fee to unlock, approve or withdraw a loan.
+Code trace: index.html — fee screens removed; app.js — Issue 3.
 
-Therefore this demo does **not** implement a flow that asks a borrower to pay ₹200/₹800 to unlock or withdraw a loan.
+### Issue 4 — Better validation feedback
+Validation errors now use an in-app toast instead of browser alert dialogs, and screen changes scroll to the top.
+Code trace: app.js — toast()/show(); index.html — toast container; styles.css — toast styles.
 
-## Next safe development stage
+### Issue 5 — Application state survives refresh
+Prototype application data is stored under a dedicated local-storage key and cleared when starting a new application.
+This is browser-only persistence, not production database storage.
 
-A production design can be prepared after the legal/lender model is established, including:
-- real lender/RE identity and authorization details;
-- secure authentication;
-- compliant KYC integration through an authorized provider;
-- consent-based data collection;
-- KFS/APR and fee disclosures;
-- repayment schedule;
-- secure admin review;
-- audit logs;
-- privacy and grievance screens.
+## Supabase / real document storage
+The current repository does not contain a Supabase client configuration or Supabase Storage integration. It would therefore be incorrect to claim that real KYC documents are currently stored in Supabase.
 
-Never use real identity documents or bank credentials in this demo repository.
+For a production version, documents should use private storage with access policies and database metadata linked to the application/user record after the proper lender, consent, privacy and KYC architecture is established. Never put a Supabase service-role key in this frontend.
+
+## Safety and compliance boundary
+Real PAN/Aadhaar/face-KYC collection, real bank-account verification, real payment collection and real loan disbursement remain disabled in this prototype.
+
+Never use real identity documents, bank credentials or payment credentials in this demo repository.
